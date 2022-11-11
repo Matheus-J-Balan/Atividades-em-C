@@ -16,7 +16,9 @@ void criar_lista(Lista *lista);
 void inserir_inicio(Lista *lista, int num);
 void inserir_fim(Lista *lista, int num);
 void inserir_ordenado(Lista *lista, int num);
-
+No* remover (Lista *lista, int num);
+No* buscar(Lista *lista, int num);
+void imprimir(Lista lista);
 
 //-------------------------------------------------------------
 void criar_lista(Lista *lista){
@@ -85,7 +87,7 @@ void inserir_ordenado(Lista *lista, int num){
          printf("\nErro ao alocar memória.\n"); 
 }
 //-------------------------------------------------------------
-No* remover )Lista *lista, int num){
+No* remover (Lista *lista, int num){
     No *aux, *remover = NULL;
     
     if(lista->inicio){
