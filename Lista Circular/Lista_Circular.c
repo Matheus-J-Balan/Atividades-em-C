@@ -36,8 +36,8 @@ void inserir_inicio(Lista *lista, int num){
         lista->inicio = novo;
         if(lista->fim == NULL)
             lista->fim = novo;
-        lista->fim->proximo = lista->proximo;
-        lista->tam++;]
+        lista->fim->proximo = lista->inicio;
+        lista->tam++;
      }else
         printf("\nErro ao alocar memória.\n");
 }
@@ -72,7 +72,7 @@ void inserir_ordenado(Lista *lista, int num){
          }else if(novo->valor < lista->inicio->valor){
              inserir_inicio(lista, num);
          }else{
-            aux = lista->proximo;
+            aux = lista->inicio;
             while(aux->proximo != lista->inicio && novo->valor > aux->proximo->valor){
                   aux = aux->proximo;
             if(aux->proximo == lista->inicio)
@@ -81,6 +81,7 @@ void inserir_ordenado(Lista *lista, int num){
                 novo->proximo = aux->proximo;
                 aux->proximo = novo;
                 lista->tam++;
+            }
             }
          }
      }else
@@ -101,7 +102,7 @@ No* remover (Lista *lista, int num){
           while(aux->proximo != lista->inicio && aux->proximo->valor != num){
             aux = aux->proximo;
           if(aux->proximo->valor == num){
-             if(lista->fim == aux->proxmimo){
+             if(lista->fim == aux->proximo){
                 remover = aux->proximo;
                 aux->proximo = remover->proximo;
                 lista->fim = aux;
@@ -134,10 +135,10 @@ void imprimir(Lista lista){
      printf("\nTamanho da Lista: %d -> Lista: ", lista.tam);
      if(no){
         do{
-          printf("%d ",no->valor)proximo;
+          printf("%d ",no->valor);
           no = no->proximo;
         }while(no != lista.inicio);
-        printf("\nInicio: %d\n", no->valor)proximo;
+        printf("\nInicio: %d\n", no->valor);
      }
      printf("\n\n");
 }
@@ -172,7 +173,7 @@ int main(void){
               scanf("%d", &opcao);
               no = remover(&lista, valor);
               if(no){
-                 printf("Elemento a ser removido: %d\n", no->valor)proximo;
+                 printf("Elemento a ser removido: %d\n", no->valor);
                  free(no);
               }else
                    printf("Elemento não exista.\n");
